@@ -1,0 +1,4 @@
+MULDA/data/*
+MULDA/code/mbart_fairseq_copy/fairseq/mbart.cc25.v2/*
+MULDA/code/translate/google-translate.json
+checkpoints/
