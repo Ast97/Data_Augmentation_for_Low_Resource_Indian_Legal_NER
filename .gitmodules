@@ -1,0 +1,3 @@
+[submodule "MULDA/code/mbart_fairseq_copy/fairseq"]
+	path = MULDA/code/mbart_fairseq_copy/fairseq
+	url = https://github.com/facebookresearch/fairseq
