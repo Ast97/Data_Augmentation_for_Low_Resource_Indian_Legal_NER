@@ -1,1 +1,3 @@
 # Gold Only
+
+The NER model (legalBERT) is trained using the gold data from the Indian Legal NER dataset without any data augmentation. This is the main baseline model on which the data augmented samples generated from our legalBART, MulDa and DAGA models will be evaluated on. Around 70\% of the total gold data (train + validation + test) was assigned to the training dataset to train this model. Around 20\% of the total data was assigned to the validation dataset. The remaining 10\% was reserved for testing (unseen data). We used Ray Tune to find the optimal model hyperparameters for training the model. 
