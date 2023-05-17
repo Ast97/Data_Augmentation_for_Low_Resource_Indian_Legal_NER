@@ -9,7 +9,7 @@ _wandb:
     huggingface_version: 4.29.2
     is_jupyter_run: true
     is_kaggle_kernel: false
-    start_time: 1684279318.897757
+    start_time: 1684301014.407426
     t:
       1:
       - 1
@@ -430,7 +430,7 @@ log_on_each_node:
   value: true
 logging_dir:
   desc: null
-  value: eval_indian_legal_ner/runs/May16_23-21-51_6ced0283c9d8
+  value: eval_indian_legal_ner/runs/May17_05-23-22_5935a8e51c32
 logging_strategy:
   desc: null
   value: steps
