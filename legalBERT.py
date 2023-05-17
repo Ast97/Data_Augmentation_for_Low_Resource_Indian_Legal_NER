@@ -49,11 +49,11 @@ def create_datasets(args):
 
     total_data = len(df) + len(test_df_judgement) + len(test_df_preamble)
 
-    split=int(total_data * args.train_split)
+    split = int(total_data * args.train_split)
+    split_train  = split /(len(train_df_judgement) + len(train_df_preamble))
+    train_df = df.sample(frac = split_train)
 
-    train_df = df[:split]
-    val_df = df[split:]
-
+    val_df = df.drop(train_df.index)
     
     augment_size = int(len(train_df) * args.augmentation_ratio)
     train_df = pd.concat([train_df, augmented_samples[:augment_size]])
