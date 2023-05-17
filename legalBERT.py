@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 import json
 import argparse
+from nervaluate import Evaluator # !pip install nervaluate
 
 import warnings
 warnings.filterwarnings('ignore')
@@ -87,6 +88,40 @@ def tokenize_all_labels(rows, tokenizer):
     tokenized_inputs["labels"] = labels
     return tokenized_inputs
 
+def transform_data(preds):
+    res = []
+
+    for pred in preds:
+        transform_pred = []
+        prev_start, prev_tag = 0, pred[0]
+        for id, tag in enumerate(pred[1:], 1):
+            if prev_tag != "OTHERS":
+                if tag == "OTHERS":
+                    transform_pred.append({"label":prev_tag, "start":prev_start, "end":id-1})
+                    prev_start = id
+                    prev_tag = tag
+                elif prev_tag != tag:
+                    transform_pred.append({"label":prev_tag, "start":prev_start, "end":id-1})
+                    prev_start = id
+                    prev_tag = tag
+            else:
+                prev_start = id
+                prev_tag = tag
+        res.append(transform_pred)
+    
+    return res
+
+
+
+def ner_evals(pred, true):
+
+    evaluator = Evaluator(true, pred, tags=LABELS_LIST)
+
+    # Returns overall metrics and metrics for each tag
+
+    results, results_per_tag = evaluator.evaluate()
+
+    return results | results_per_tag
 
 def evaluate_metrics(pred_tuple, metric):
     predictions, labels = pred_tuple
@@ -95,10 +130,10 @@ def evaluate_metrics(pred_tuple, metric):
     actual_predictions = [[LABELS_LIST[pred_tuple] for (pred_tuple, l) in zip(prediction, label) if l != -100] for prediction, label in zip(predictions, labels)]
     actual_labels = [[LABELS_LIST[l] for (pred_tuple, l) in zip(prediction, label) if l != -100] for prediction, label in zip(predictions, labels)]
     results = metric.compute(predictions=actual_predictions, references=actual_labels)
-    return {"precision": results["overall_precision"], 
-            "recall": results["overall_recall"], 
-            "f1": results["overall_f1"], 
-            "accuracy": results["overall_accuracy"]}
+    results = metric.compute(predictions=actual_predictions, references=actual_labels)
+    ner_results = ner_evals(transform_data(actual_predictions), transform_data(actual_labels))
+    return ner_results | {"precision": results["overall_precision"], "recall": results["overall_recall"], "f1": results["overall_f1"], "accuracy": results["overall_accuracy"]}
+    
 
 
 def main():
@@ -129,9 +164,8 @@ def main():
 
     print("tokenised datasets")
 
-
     training_arguments = TrainingArguments(
-        "eval_indian_legal_ner",
+        args.model_path + args.model_name,
         evaluation_strategy = "epoch",
         learning_rate=args.lr,
         per_device_train_batch_size=args.batch_size,
@@ -154,7 +188,7 @@ def main():
     )
     trainer.train()
     trainer.evaluate()
-    trainer.save_model(args.model_path)
+    trainer.save_model(args.model_path + args.model_name + ".model")
 
     print("completed training")
 
@@ -172,11 +206,13 @@ def build_args(parser):
     parser.add_argument("--dev_judgement_file", type=str, default='./Data_preprocess/NER_DEV/NER_DEV_JUDGEMENT_PREPROCESSED.json')
     parser.add_argument("--augmentation_ratio", type=float, default=0.25)
     parser.add_argument("--train_split", type=float, default=0.7)
-    parser.add_argument("--epochs", type=int, default=1)
+    parser.add_argument("--epochs", type=int, default=5)
     parser.add_argument("--batch_size", type=int, default=5)
     parser.add_argument("--lr", type=float, default=2.910635913133073e-05)
     parser.add_argument("--wd", type=float, default=1e-5)
-    parser.add_argument("--model_path", type=str, default="./models/indian_legal_ner.model")
+    parser.add_argument("--checkpoint_path", type=str, default="./models/checkpoints/")
+    parser.add_argument("--model_path", type=str, default="./models/")
+    parser.add_argument("--model_name", type=str, default="indian_legal_ner")
     return parser.parse_args()
 
 if __name__ == "__main__":
