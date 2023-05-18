@@ -6,13 +6,13 @@ In this project, our undertaking aims to address the challenge of inadequately l
 # Reproducing Results
 
 ## LegalBART
-See ```LegalBART/README.md``` for detailed instructions. [Link](https://github.com/Ast97/Data_Augmentation_for_Low_Resource_Indian_Legal_NER](https://github.com/Ast97/Data_Augmentation_for_Low_Resource_Indian_Legal_NER/tree/main/legalBART)
+See ```LegalBART/README.md``` for detailed instructions. [Link](https://github.com/Ast97/Data_Augmentation_for_Low_Resource_Indian_Legal_NER/tree/main/legalBART)
 
 ## Gold Only
-See ```Gold_Only/README.md``` for detailed instructions. [Link](https://github.com/Ast97/Data_Augmentation_for_Low_Resource_Indian_Legal_NER](https://github.com/Ast97/Data_Augmentation_for_Low_Resource_Indian_Legal_NER/tree/main/Gold_Only)
+See ```Gold_Only/README.md``` for detailed instructions. [Link](https://github.com/Ast97/Data_Augmentation_for_Low_Resource_Indian_Legal_NER/tree/main/Gold_Only)
 
 ## MULDA
-See ```MULDA/README.md``` for detailed instructions. [Link](https://github.com/Ast97/Data_Augmentation_for_Low_Resource_Indian_Legal_NER](https://github.com/Ast97/Data_Augmentation_for_Low_Resource_Indian_Legal_NER/tree/main/MULDA-BART)
+See ```MULDA/README.md``` for detailed instructions. [Link](https://github.com/Ast97/Data_Augmentation_for_Low_Resource_Indian_Legal_NER/tree/main/MULDA-BART)
 
 ## DAGA
-See  ```DAGA/README.md``` for detailed instructions. [Link](https://github.com/Ast97/Data_Augmentation_for_Low_Resource_Indian_Legal_NER](https://github.com/Ast97/Data_Augmentation_for_Low_Resource_Indian_Legal_NER/tree/main/DAGA)
+See  ```DAGA/README.md``` for detailed instructions. [Link](https://github.com/Ast97/Data_Augmentation_for_Low_Resource_Indian_Legal_NER/tree/main/DAGA)
