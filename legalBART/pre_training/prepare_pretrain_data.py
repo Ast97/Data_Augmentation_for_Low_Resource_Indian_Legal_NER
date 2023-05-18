@@ -9,7 +9,7 @@ import random
 random.seed(5)
 import sys
 import os
-sys.path.append('/fs/nexus-projects/audio-visual_dereverberation/legal-data/genius/')
+sys.path.append('/legal_data/')
 
 print(sys.path)
 from ner_utils import SketchExtractor, clean_pipeline
@@ -64,7 +64,7 @@ for name in names:
         for p in passages:
             
             res['text'].append(p)
-            _, kws = sketch_extractor.get_kws(p, max_ngram=3, top=max(a_len(p)//5,1)) # max 3-gram
+            _, kws = sketch_extractor.get_kws(p, max_ngram=3, top=max(a_len(p)//5,1)) 
             sketch = sketch_extractor.get_sketch_from_kws(p, kws, template=4)
             res['sketch_4'].append(sketch)
         return res
@@ -76,4 +76,4 @@ for name in names:
 
     print(dataset_with_sketch)
 
-    dataset_with_sketch.save_to_disk(f'/fs/nexus-projects/audio-visual_dereverberation/legal-data/genius/saved_datasets/{name}/')
+    dataset_with_sketch.save_to_disk(f'/saved_datasets/{name}/')

@@ -14,7 +14,7 @@ parser.add_argument('--sketch_type', type=str, default=4, help='1,2,3 or 4. Deta
 args = parser.parse_args()
 
 # pretrained checkpoint:
-model_checkpoint = '/fs/nexus-projects/audio-visual_dereverberation/legal-data/genius/saved_models/bart-large-ner_train-sketch4/checkpoint-190105'  
+model_checkpoint = '/saved_models/bart-large-ner_train-sketch4/checkpoint-190105'  
 tokenizer = AutoTokenizer.from_pretrained(model_checkpoint)
 print("$ck max length : " + str(tokenizer.model_max_length))
 ##################################################################
@@ -23,7 +23,7 @@ print("$ck max length : " + str(tokenizer.model_max_length))
 
 
 from datasets import load_from_disk
-dataset_path = '/fs/nexus-projects/audio-visual_dereverberation/legal-data/genius/saved_datasets/ner_train' 
+dataset_path = '/saved_datasets/ner_train' 
 dataset_name = dataset_path.split('/')[-1]
 dataset_with_sketch = load_from_disk(dataset_path)
 
@@ -76,7 +76,7 @@ model = AutoModelForSeq2SeqLM.from_pretrained(model_checkpoint)
 
 logging_steps = len(tokenized_dataset['train']) // batch_size
 
-output_dir = f"/fs/nexus-projects/audio-visual_dereverberation/legal-data/genius/saved_models/bart-large-{dataset_name}-sketch{args.sketch_type}"
+output_dir = f"/saved_models/bart-large-{dataset_name}-sketch{args.sketch_type}"
 
 training_args = Seq2SeqTrainingArguments(
     output_dir=output_dir,

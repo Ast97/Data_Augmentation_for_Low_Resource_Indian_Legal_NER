@@ -44,7 +44,6 @@ class DataCore(object):
         virtual_cand = composed_word(candidate_terms)
         return virtual_cand
 
-    # Build the datacore features
     def _build(self, text, windowsSize, n):
         text = self.pre_filter(text)
         self.sentences_str = [ [w for w in split_contractions(web_tokenizer(s)) if not (w.startswith("'") and len(w) > 1) and len(w) > 0] for s in list(split_multi(text)) if len(s.strip()) > 0]
@@ -56,7 +55,7 @@ class DataCore(object):
             sentence_obj_aux = []
             block_of_word_obj = []
             for (pos_sent, word) in enumerate(sentence):
-                if len([c for c in word if c in self.exclude]) == len(word): # If the word is based on exclude chars
+                if len([c for c in word if c in self.exclude]) == len(word): 
                     if len(block_of_word_obj) > 0:
                         sentence_obj_aux.append( block_of_word_obj )
                         block_of_word_obj = []
@@ -66,13 +65,13 @@ class DataCore(object):
                     term_obj.addOccur(tag, sentence_id, pos_sent, pos_text)
                     pos_text += 1
 
-                    #Create co-occurrence matrix
+                 
                     if tag not in self.tagsToDiscard:
                         word_windows = list(range( max(0, len(block_of_word_obj)-windowsSize), len(block_of_word_obj) ))
                         for w in word_windows:
                             if block_of_word_obj[w][0] not in self.tagsToDiscard: 
                                 self.addCooccur(block_of_word_obj[w][2], term_obj)
-                    #Generate candidate keyphrase list
+                    
                     candidate = [ (tag, word, term_obj) ]
                     cand = composed_word(candidate)
                     self.addOrUpdateComposedWord(cand)
@@ -83,7 +82,7 @@ class DataCore(object):
                         cand = composed_word(candidate[::-1])
                         self.addOrUpdateComposedWord(cand)
 
-                    # Add term to the block of words' buffer
+                    
                     block_of_word_obj.append( (tag, word, term_obj) )
 
             if len(block_of_word_obj) > 0:
@@ -151,11 +150,11 @@ class DataCore(object):
         if unique_term in self.terms:
             return self.terms[unique_term]
                 
-        # Include this part
+        
         simples_unique_term = unique_term
         for pontuation in self.exclude:
             simples_unique_term = simples_unique_term.replace(pontuation, '')
-        # until here
+        
         isstopword = simples_sto or unique_term in self.stopword_set or len(simples_unique_term) < 3
         
         term_id = len(self.terms)
@@ -182,7 +181,7 @@ class DataCore(object):
 
 
 class composed_word(object):
-    def __init__(self, terms): # [ (tag, word, term_obj) ]
+    def __init__(self, terms):
         if terms == None:
              self.start_or_end_stopwords = True
              self.tags = set()
