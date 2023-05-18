@@ -11,8 +11,13 @@ See ```LegalBART/README.md``` for detailed instructions. [Link](https://github.c
 ## Gold Only
 See ```Gold_Only/README.md``` for detailed instructions. [Link](https://github.com/Ast97/Data_Augmentation_for_Low_Resource_Indian_Legal_NER/tree/main/Gold_Only)
 
+## DAGA
+See  ```DAGA/README.md``` for detailed instructions. [Link](https://github.com/Ast97/Data_Augmentation_for_Low_Resource_Indian_Legal_NER/tree/main/DAGA)
+
+## Replacement based Augmentation
+See  ```ReplacementBasedAugmentation/README.md``` for detailed instructions. [Link](https://github.com/Ast97/Data_Augmentation_for_Low_Resource_Indian_Legal_NER/tree/main/Simple_Augmentation_BiLSTM/data-augmentation-ner-legal-main)
+
 ## MULDA
 See ```MULDA/README.md``` for detailed instructions. [Link](https://github.com/Ast97/Data_Augmentation_for_Low_Resource_Indian_Legal_NER/tree/main/MULDA-BART)
 
-## DAGA
-See  ```DAGA/README.md``` for detailed instructions. [Link](https://github.com/Ast97/Data_Augmentation_for_Low_Resource_Indian_Legal_NER/tree/main/DAGA)
+
