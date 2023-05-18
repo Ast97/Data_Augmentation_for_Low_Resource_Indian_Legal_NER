@@ -1,6 +1,8 @@
 
 # DAGA: Data Augmentation with Generative Approach
 
+This repository is cloned from https://github.com/ntunlp/daga and all the code from 'lstm-lm' directory is used as is. 
+
 ## Environment Setup
 
 To set up the project environment, follow the steps below:
