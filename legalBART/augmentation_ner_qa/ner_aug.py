@@ -26,7 +26,7 @@ args = parser.parse_args()
 
 
 
-raw_dataset = load_from_disk('/fs/nexus-projects/audio-visual_dereverberation/legal-data/genius/preprocessed_dataset/ner_train_pre_preamble_hf')
+raw_dataset = load_from_disk('/preprocessed_dataset/ner_train_pre_preamble_hf')
 print('raw_dataset length',len(raw_dataset))
 
 tag_names = ["OTHERS", "B-PETITIONER", "I-PETITIONER", "B-COURT", "I-COURT", "B-RESPONDENT", "I-RESPONDENT", "B-JUDGE", "I-JUDGE", "B-OTHER_PERSON", "I-OTHER_PERSON", "B-LAWYER", "I-LAWYER", "B-DATE", "I-DATE", "B-ORG", "I-ORG", "B-GPE", "I-GPE", "B-STATUTE", "I-STATUTE", "B-PROVISION", "I-PROVISION", "B-PRECEDENT", "I-PRECEDENT", "B-CASE_NUMBER", "I-CASE_NUMBER", "B-WITNESS", "I-WITNESS"]
@@ -149,7 +149,7 @@ for tokens, tags in zip(tqdm(longer_data['tokens']), longer_data['ner_tags']):
 
 sketch_dataset = List2Dataset(sketches)
 
-genius = pipeline('text2text-generation',model='/fs/nexus-projects/audio-visual_dereverberation/legal-data/genius/saved_models/bart-large-ner_train-sketch4/checkpoint-1720',device=0)
+genius = pipeline('text2text-generation',model='/saved_models/bart-large-ner_train-sketch4/checkpoint-1720',device=0)
 
 
 

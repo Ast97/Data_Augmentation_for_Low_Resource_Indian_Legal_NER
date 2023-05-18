@@ -11,3 +11,5 @@ Use NER_DEV_JUDGEMENT_PREPROCESSED.json and NER_DEV_PREAMBLE_PREPROCESSED.json
 Model Training and Evaluation steps:
 1. Hyperparameter tuning: https://github.com/Ast97/Data_Augmentation_for_Low_Resource_Indian_Legal_NER/blob/main/Gold_Only/Gold_Only_Indian_Legal_NER_Hyperparameter_Tuning.ipynb
 2. Training and Evaluation: https://github.com/Ast97/Data_Augmentation_for_Low_Resource_Indian_Legal_NER/blob/main/Gold_Only/Training_Gold_Only_and_Evaluating_Data_Augmented_Samples.ipynb 
+ # Note:
+ I used reference from https://medium.com/@andrewmarmon/fine-tuned-named-entity-recognition-with-hugging-face-bert-d51d4cb3d7b5 blog to tokenize my datasets (tokenize_and_align_labels()).

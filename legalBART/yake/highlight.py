@@ -6,25 +6,16 @@ DEFAULT_HIGHLIGHT_POST = "</kw>"
 class TextHighlighter(object):
 
     def __init__(self, max_ngram_size, highlight_pre = DEFAULT_HIGHLIGHT_PRE, highlight_post = DEFAULT_HIGHLIGHT_POST):
-        """
-        TextHighlighter constructor. Define highlight text snippets
-
-        :max_ngram_size - Specifies the maximum ngram size in the keywords.   
-        :highlight_pre – Specifies the text that should appear before a highlighted term.(e.g. <span>). It defaults to <kw>
-        :highlight_post –  Specifies the text that should appear after a highlighted term. (e.g. </span>). It defaults to </kw>
-        """
 
         self.highlight_pre = highlight_pre
         self.highlight_post = highlight_post
         self.max_ngram_size = max_ngram_size
 
     def highlight(self, text, keywords):
-        """
-        Returns the highlighted text snippets of matching text in the original data
-        """
+        
 
         n_text = ''
-        # extract only the kw
+        
         if(len(keywords) > 0):
             kw_list = keywords
 
