@@ -1,6 +1,17 @@
 ﻿[![DOI](https://zenodo.org/badge/520801122.svg)](https://zenodo.org/badge/latestdoi/520801122)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/fusion-jena/data-augmentation-ner-legal/blob/master/LICENSE)
 
+
+# Performing Synonym Replacement and Mention Replacement for Indian Legal NER (Named Entity Recognition)
+
+All scripts ran are stored in folder src/Jupyter Notebooks
+1. NER_LEGAL.ipynb to NER_LEGAL4.ipynb are just copies of the same file training the BiLSTM Crf through different methods. This was done so that multiple collab sessions could be used simulatenously. Each Notebook further trains Synonym Replacement with external resources like Open Thesaurus, Contextual Language Model and Fasttext.
+
+2. Through these notebooks we can see that Mention replacement has performed the best so we move forward to retrain the LegalBERT using augmented data from Mention Replacement. This is done in notebook src/Jupyter Notebooks/NER_LEGALRETRAINED_25_Noise_MR.ipynb
+
+
+# OLDER README STARTS HERE (Very Helpful)!
+
 # Evaluation of Data Augmentation for Named Entity Recognition in the German Legal Domain
 
 - We evaluate the effect of Synonym Replacement, Mention Replacement and Back-Translation augmentation techniques when applied to data from the German legal domain. 
